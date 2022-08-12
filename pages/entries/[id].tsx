@@ -1,5 +1,5 @@
-import React, { ChangeEvent, FC, useContext, useMemo, useState } from "react";
-import { GetServerSideProps } from "next";
+import React, { ChangeEvent, useContext, useMemo, useState } from "react";
+import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
 import { DeleteOutlined, SaveOutlined } from "@mui/icons-material";
 import {
@@ -34,7 +34,7 @@ interface EntryPageProps {
   entry: Entry;
 }
 
-const EntryPage: FC<EntryPageProps> = ({ entry }) => {
+const EntryPage: NextPage<EntryPageProps> = ({ entry }) => {
   const { updateEntry, deleteEntry } = useContext(EntriesContext);
   const {
     openDeleteConfirmation,
@@ -166,10 +166,11 @@ const EntryPage: FC<EntryPageProps> = ({ entry }) => {
 // You should use getServerSideProps when:
 // - Only if you need to pre-render a page whose data must be fetched at request time
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  console.log("1")
   const { id } = params as { id: string };
-
+  console.log("2")
   const entry = await dbEntries.getEntryById(id);
-
+  console.log("3")
   if (!entry)
     return {
       redirect: {
@@ -177,7 +178,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         permanent: false,
       },
     };
-
+    console.log("4")
   return {
     props: {
       entry,
