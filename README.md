@@ -1,5 +1,12 @@
 # Next.js OpenJira App
 
+## Techs
+Next js and MongoDB
+
+## Live demo
+[open-jira](https://open-jira-rho.vercel.app/)
+
+## Local
 To run localy, it is needed the db
 
 ```
