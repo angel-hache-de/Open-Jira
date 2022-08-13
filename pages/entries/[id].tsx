@@ -166,11 +166,11 @@ const EntryPage: NextPage<EntryPageProps> = ({ entry }) => {
 // You should use getServerSideProps when:
 // - Only if you need to pre-render a page whose data must be fetched at request time
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  console.log("1")
+  console.log("1");
   const { id } = params as { id: string };
-  console.log("2")
+  console.log("2");
   const entry = await dbEntries.getEntryById(id);
-  console.log("3")
+  console.log("3");
   if (!entry)
     return {
       redirect: {
@@ -178,7 +178,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         permanent: false,
       },
     };
-    console.log("4")
+  console.log("4");
   return {
     props: {
       entry,
